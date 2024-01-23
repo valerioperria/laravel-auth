@@ -4,6 +4,10 @@
     <div class="container mt-5">
         <h2>Projects' list</h2>
 
+        <div class="text-end">
+          <a class="btn btn-success" href="{{ route('admin.projects.create') }}">New project</a>
+        </div>
+
         <table class="table table-striped mt-5">
             <thead>
                 <tr>
@@ -22,6 +26,9 @@
                         <td>{{ $project->created_at }}</td>
                         <td>{{ $project->content }}</td>
                         <td>{{ $project->comment }}</td>
+                        <td>
+                          <a class="btn btn-primary" href="{{ route('admin.projects.show', ['project' => $project->slug]) }}">Details</a>
+                        </td>
                     </tr>
                 @endforeach
             </tbody>
