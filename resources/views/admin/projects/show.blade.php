@@ -2,6 +2,8 @@
 
 @section('content')
     <div class="container mt-5">
+        @include('partials.previous_button')
+
         <h2>{{ $project->title }}</h2>
 
         <div class="mt-4">

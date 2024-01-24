@@ -2,17 +2,10 @@
 
 @section('content')
     <div class="container mt-5">
-        <h2 class="text-center">Make new project</h2>
 
-        {{-- @if ($errors->any())
-            <div class="alert alert-danger">
-                <ul>
-                    @foreach ($errors->all() as $error)
-                        <li>{{ $error }}</li>
-                    @endforeach
-                </ul>
-            </div>
-        @endif --}}
+        @include('partials.previous_button')
+        
+        <h2 class="text-center">Make new project</h2>
 
         <form class="mt-5" action="{{ route('admin.projects.store') }}" method="POST">
             @csrf

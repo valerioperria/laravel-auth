@@ -2,6 +2,9 @@
 
 @section('content')
     <div class="container mt-5">
+        
+        @include('partials.previous_button')
+
         <h2>Change project</h2>
 
         <form action="{{ route('admin.projects.update', ['project' => $project->slug]) }}" method="POST">
