@@ -22,7 +22,7 @@ class ProjectsTableSeeder extends Seeder
             $project->title = $faker->sentence(10);
             $project->content = $faker->text(500);
             $project->comment = $faker->text(300);
-            $project->slug = Str::slug($project->title);
+            // $project->slug = Str::slug($project->title);
             $project->save();
         }
     }
