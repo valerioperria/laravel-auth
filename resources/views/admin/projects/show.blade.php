@@ -11,7 +11,7 @@
         </div>
 
         <div class="mt-4">
-           Slug: {{ $project->slug }}
+            Slug: {{ $project->slug }}
         </div>
 
         <h5 class="mt-4">
@@ -21,5 +21,9 @@
         <p class=mt-4>
             {{ $project->comment }}
         </p>
-    </div>
-@endsection
+
+        <div>
+            <a class="btn btn-warning" href="{{ route('admin.projects.edit', ['project' => $project->slug]) }}">Modifica</a>
+        </div>
+        @include('admin.projects.partials.delete_button')
+    @endsection

@@ -35,11 +35,7 @@
                         <td>
                           <a class="btn btn-primary" href="{{ route('admin.projects.show', ['project' => $project->slug]) }}">Details</a>
                           <a class="btn btn-warning" href="{{ route('admin.projects.edit', ['project' => $project->slug]) }}">Change</a>
-                          <form action="{{ route('admin.projects.destroy', ['project' => $project->slug]) }}" class="d-inline-block" method="POST">
-                            @csrf
-                            @method('DELETE')
-                            <button type="submit" class="btn btn-danger">Delete</button>
-                          </form>
+                          @include('admin.projects.partials.delete_button')
                         </td>
                     </tr>
                 @endforeach
