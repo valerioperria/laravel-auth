@@ -9,7 +9,7 @@
         </div>
 
         <div class="mt-4">
-            {{ $project->slug }}
+           Slug: {{ $project->slug }}
         </div>
 
         <h5 class="mt-4">
