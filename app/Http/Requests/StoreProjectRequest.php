@@ -25,7 +25,7 @@ class StoreProjectRequest extends FormRequest
     {
         return [
             'title' => 'required|max:500|min:10|unique:projects',
-            'content' => 'nullable',
+            'content' => 'required',
             'comment' => 'nullable'
         ];
     }

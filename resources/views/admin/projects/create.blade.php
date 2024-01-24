@@ -25,9 +25,12 @@
                 @enderror
             </div>
             
-            <div class="mb-3">
+            <div class="mb-3 has-validation">
                 <label for="content" class="form-label">Content</label>
-                <textarea class="form-control" id="content" rows="3" name="content">{{ old('content') }}</textarea>
+                <textarea class="form-control  @error('content') is-invalid @enderror" id="content" rows="3" name="content">{{ old('content') }}</textarea>
+                @error('content')
+                <div class="invalid-feedback">{{ $message }}</div>
+            @enderror
             </div>      
 
             <div class="mb-3">
