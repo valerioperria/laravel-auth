@@ -8,6 +8,7 @@
           <a class="btn btn-success" href="{{ route('admin.projects.create') }}">New project</a>
         </div>
 
+        @if (count($projects) > 0)
         <table class="table table-striped mt-5">
             <thead>
                 <tr>
@@ -32,6 +33,12 @@
                     </tr>
                 @endforeach
             </tbody>
-        </table>
+        </table> 
+        @else
+            <div class="alert alert-info mt-5">
+                Projects' list is empty
+            </div>
+        @endif
+
     </div>
 @endsection
