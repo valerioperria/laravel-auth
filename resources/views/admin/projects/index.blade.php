@@ -29,6 +29,7 @@
                         <td>{{ $project->comment }}</td>
                         <td>
                           <a class="btn btn-primary" href="{{ route('admin.projects.show', ['project' => $project->slug]) }}">Details</a>
+                          <a class="btn btn-warning" href="{{ route('admin.projects.edit', ['project' => $project->slug]) }}">Change</a>
                         </td>
                     </tr>
                 @endforeach
