@@ -6,6 +6,14 @@
 
         <h2>{{ $project->title }}</h2>
 
+        @if ($project->cover_image)
+            <div>
+                <img src="{{ asset('storage/' . $project->cover_image) }}" alt="">
+            </div>
+        @else
+            <p>No image</p>
+        @endif
+
         <div class="mt-4">
             {{ $project->created_at }}
         </div>

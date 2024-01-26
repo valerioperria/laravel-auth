@@ -8,6 +8,7 @@ use App\Models\Project;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use App\Http\Requests\UpdateProjectRequest;
+use Illuminate\Support\Facades\Storage;
 
 class ProjectController extends Controller
 {
@@ -44,6 +45,10 @@ class ProjectController extends Controller
         $project = new Project();
         $project->fill($form_data);
         // $project->slug = Str::slug($project->title, '-');
+        if($request->hasFile('cover_image')) {
+            $path = Storage::put('project_images', $request->cover_image);
+            $project->cover_image = $path;
+        }
         $project->save();
         return redirect()->route('admin.projects.show', ['project' => $project->slug]);
     }
@@ -80,6 +85,15 @@ class ProjectController extends Controller
     public function update(UpdateProjectRequest $request, Project $project)
     {
         $form_data = $request->validated();
+
+        if($request->hasFile('cover_image')) {
+            if($project->cover_image) {
+                Storage::delete($project->cover_image);
+            }
+
+            $path = Storage::put('project_images', $request->cover_image);
+            $form_data['cover_image'] = $path;
+        }
         $project->update($form_data);
 
         return redirect()->route('admin.projects.show', ['project' => $project->slug]);
@@ -94,6 +108,9 @@ class ProjectController extends Controller
     public function destroy(Project $project)
     {
         $project->delete();
+
+        Storage::delete($project->cover_image);
+
         return redirect()->route('admin.projects.index')->with('message', "$project->title has been deleted");
     }
 }

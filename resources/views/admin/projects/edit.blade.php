@@ -7,7 +7,7 @@
 
         <h2>Change project</h2>
 
-        <form action="{{ route('admin.projects.update', ['project' => $project->slug]) }}" method="POST">
+        <form action="{{ route('admin.projects.update', ['project' => $project->slug]) }}" method="POST" enctype="multipart/form-data">
             @csrf
             @method('PUT')
 
@@ -29,6 +29,15 @@
             </div>
 
             <div class="mb-3">
+                <label for="cover_image">Image</label>
+                <input type="file" class="form-control" id="cover_image" name="cover_image">
+            </div>
+
+            <div class="mb-2">
+                <img id="preview-img" src="{{ asset('storage/' . $project->cover_image) }}" alt="">
+            </div>
+
+            <div class="mb-3">
                 <label for="comment" class="form-label">Comment</label>
                 <textarea class="form-control" id="comment" rows="3" name="comment">{{ old('comment', $project->comment) }}</textarea>
             </div>
@@ -36,4 +45,8 @@
             <button class="btn btn-success" type="submit">Save changes</button>
         </form>
     </div>
+@endsection
+
+@section('scripts')
+    @vite(['resources/js/image-preview.js'])
 @endsection
